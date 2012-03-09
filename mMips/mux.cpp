@@ -58,6 +58,31 @@ void MUX3::mux()
 	out.write(data);
 }
 
+void MUX4::mux()
+{
+	sc_bv<DWORD> data;
+	sc_uint<2> sel_t;
+	
+	#ifdef VERBOSE
+		clog << "MUX '" << name() << "'" <<endl;
+	#endif
+	
+	// Read correct input
+	sel_t = sel.read();
+	if(sel_t == 0)
+		data = in0.read();
+	else if (sel_t == 1)
+		data = in1.read();
+	else if (sel_t == 2)
+		data = in2.read();
+	else
+		data = in3.read();
+		
+	// Write output
+	out.write(data);
+}
+
+
 void MUX3_AWORDREG::mux()
 {
 	sc_bv<AWORDREG> data;

@@ -1,0 +1,1278 @@
+Release 8.2i - xst I.31
+Copyright (c) 1995-2006 Xilinx, Inc.  All rights reserved.
+--> 
+Reading design: mmips.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "mmips.prj"
+Input Format                       : mixed
+
+---- Target Parameters
+Output File Name                   : "mmips.ngc"
+Output Format                      : NGC
+Target Device                      : xc2v3000-fg676-4
+
+---- Source Options
+Top Module Name                    : mMIPS
+
+---- Target Options
+Add IO Buffers                     : no
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "ADD.v" in library work
+Compiling verilog file "ALUCTRL.v" in library work
+Module <ADD> compiled
+Compiling verilog file "ALU.v" in library work
+Module <ALUCTRL> compiled
+Compiling verilog file "BRAM512x32_CONV.v" in library work
+Module <ALU> compiled
+Compiling verilog file "BRAM512x32.v" in library work
+Module <BRAM512x32_CONV> compiled
+Compiling verilog file "BRANCH_CTRL.v" in library work
+Module <BRAM512x32> compiled
+Compiling verilog file "CTRL.v" in library work
+Module <BRANCH_CTRL> compiled
+Compiling verilog file "DECODER_NBUF.v" in library work
+Module <CTRL> compiled
+Compiling verilog file "DECODER.v" in library work
+Module <DECODER_NBUF> compiled
+Compiling verilog file "HAZARD_CTRL.v" in library work
+Module <DECODER> compiled
+Compiling verilog file "HAZARD.v" in library work
+Module <HAZARD_CTRL> compiled
+Compiling verilog file "IMM2WORD.v" in library work
+Module <HAZARD> compiled
+Compiling verilog file "MEMDEV.v" in library work
+Module <IMM2WORD> compiled
+Compiling verilog file "mMIPS.v" in library work
+Module <MEMDEV> compiled
+Compiling verilog file "MUX2.v" in library work
+Module <mMIPS> compiled
+Compiling verilog file "MUX3_AWORDREG.v" in library work
+Module <MUX2> compiled
+Compiling verilog file "MUX3.v" in library work
+Module <MUX3_AWORDREG> compiled
+Compiling verilog file "MUX4.v" in library work
+Module <MUX3> compiled
+Compiling verilog file "REGFILE16.v" in library work
+Module <MUX4> compiled
+Compiling verilog file "REGISTER_1.v" in library work
+Module <REGFILE16> compiled
+Compiling verilog file "REGISTER_5.v" in library work
+Module <REGISTER_1> compiled
+Compiling verilog file "REGISTER_6.v" in library work
+Module <REGISTER_5> compiled
+Compiling verilog file "REGISTER_AWORDREG.v" in library work
+Module <REGISTER_6> compiled
+Compiling verilog file "REGISTER_DWORD.v" in library work
+Module <REGISTER_AWORDREG> compiled
+Compiling verilog file "REGISTER_W_ALUOP.v" in library work
+Module <REGISTER_DWORD> compiled
+Compiling verilog file "REGISTER_W_ALUSRC.v" in library work
+Module <REGISTER_W_ALUOP> compiled
+Compiling verilog file "REGISTER_W_BRANCHOP.v" in library work
+Module <REGISTER_W_ALUSRC> compiled
+Compiling verilog file "REGISTER_W_HILOALU_S.v" in library work
+Module <REGISTER_W_BRANCHOP> compiled
+Compiling verilog file "REGISTER_W_HILO_W.v" in library work
+Module <REGISTER_W_HILOALU_S> compiled
+Compiling verilog file "REGISTER_W_MEMREAD.v" in library work
+Module <REGISTER_W_HILO_W> compiled
+Compiling verilog file "REGISTER_W_MEMTOREG.v" in library work
+Module <REGISTER_W_MEMREAD> compiled
+Compiling verilog file "REGISTER_W_MEMWRITE.v" in library work
+Module <REGISTER_W_MEMTOREG> compiled
+Compiling verilog file "REGISTER_W_REGDST.v" in library work
+Module <REGISTER_W_MEMWRITE> compiled
+Compiling verilog file "REGISTER_W_REGVAL.v" in library work
+Module <REGISTER_W_REGDST> compiled
+Compiling verilog file "REGISTER_W_REGWRITE.v" in library work
+Module <REGISTER_W_REGVAL> compiled
+Compiling verilog file "REGISTER_W_TARGET.v" in library work
+Module <REGISTER_W_REGWRITE> compiled
+Compiling verilog file "SHIFTLEFT.v" in library work
+Module <REGISTER_W_TARGET> compiled
+Compiling verilog file "SHIFTRIGHT.v" in library work
+Module <SHIFTLEFT> compiled
+Compiling verilog file "SIGNEXTEND_BYTE.v" in library work
+Module <SHIFTRIGHT> compiled
+Compiling verilog file "SIGNEXTEND.v" in library work
+Module <SIGNEXTEND_BYTE> compiled
+Module <SIGNEXTEND> compiled
+No errors in compilation
+Analysis of file <"mmips.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <mMIPS> in library <work>.
+
+Analyzing hierarchy for module <MEMDEV> in library <work>.
+
+Analyzing hierarchy for module <MUX4> in library <work>.
+
+Analyzing hierarchy for module <MUX3> in library <work>.
+
+Analyzing hierarchy for module <MUX2> in library <work>.
+
+Analyzing hierarchy for module <MUX3_AWORDREG> in library <work>.
+
+Analyzing hierarchy for module <DECODER_NBUF> in library <work>.
+
+Analyzing hierarchy for module <DECODER> in library <work>.
+
+Analyzing hierarchy for module <CTRL> in library <work>.
+
+Analyzing hierarchy for module <SHIFTLEFT> in library <work>.
+
+Analyzing hierarchy for module <SIGNEXTEND_BYTE> in library <work>.
+
+Analyzing hierarchy for module <IMM2WORD> in library <work>.
+
+Analyzing hierarchy for module <ALUCTRL> in library <work>.
+
+Analyzing hierarchy for module <ALU> in library <work>.
+
+Analyzing hierarchy for module <REGFILE16> in library <work>.
+
+Analyzing hierarchy for module <ADD> in library <work>.
+
+Analyzing hierarchy for module <BRANCH_CTRL> in library <work>.
+
+Analyzing hierarchy for module <HAZARD_CTRL> in library <work>.
+
+Analyzing hierarchy for module <HAZARD> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_DWORD> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_MEMTOREG> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_REGWRITE> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_AWORDREG> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_MEMREAD> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_MEMWRITE> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_BRANCHOP> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_HILOALU_S> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_HILO_W> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_TARGET> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_REGVAL> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_REGDST> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_ALUOP> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_W_ALUSRC> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_5> in library <work>.
+
+Analyzing hierarchy for module <REGISTER_6> in library <work>.
+
+Analyzing hierarchy for module <BRAM512x32> in library <work>.
+
+Analyzing hierarchy for module <BRAM512x32_CONV> in library <work>.
+
+Building hierarchy successfully finished.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <mMIPS>.
+Module <mMIPS> is correct for synthesis.
+ 
+Analyzing module <MEMDEV> in library <work>.
+WARNING:Xst:905 - "MEMDEV.v" line 80: The signals <__tmp61, __tmp62, __tmp64, __tmp63> are missing in the sensitivity list of always block.
+Module <MEMDEV> is correct for synthesis.
+ 
+Analyzing module <MUX4> in library <work>.
+WARNING:Xst:905 - "MUX4.v" line 18: The signals <data> are missing in the sensitivity list of always block.
+Module <MUX4> is correct for synthesis.
+ 
+Analyzing module <MUX3> in library <work>.
+WARNING:Xst:905 - "MUX3.v" line 16: The signals <data> are missing in the sensitivity list of always block.
+Module <MUX3> is correct for synthesis.
+ 
+Analyzing module <MUX2> in library <work>.
+WARNING:Xst:905 - "MUX2.v" line 13: The signals <data> are missing in the sensitivity list of always block.
+Module <MUX2> is correct for synthesis.
+ 
+Analyzing module <MUX3_AWORDREG> in library <work>.
+WARNING:Xst:905 - "MUX3_AWORDREG.v" line 16: The signals <data> are missing in the sensitivity list of always block.
+Module <MUX3_AWORDREG> is correct for synthesis.
+ 
+Analyzing module <DECODER_NBUF> in library <work>.
+Module <DECODER_NBUF> is correct for synthesis.
+ 
+Analyzing module <DECODER> in library <work>.
+Module <DECODER> is correct for synthesis.
+ 
+Analyzing module <CTRL> in library <work>.
+WARNING:Xst:863 - "CTRL.v" line 9: Name conflict (<functioncode> and <FunctionCode>, renaming functioncode as functioncode_rnm0).
+WARNING:Xst:863 - "CTRL.v" line 7: Name conflict (<opcode> and <Opcode>, renaming opcode as opcode_rnm0).
+"CTRL.v" line 70: Found Parallel Case directive in module <CTRL>.
+"CTRL.v" line 69: Found Parallel Case directive in module <CTRL>.
+WARNING:Xst:905 - "CTRL.v" line 47: The signals <__tmp61> are missing in the sensitivity list of always block.
+Module <CTRL> is correct for synthesis.
+ 
+Analyzing module <SHIFTLEFT> in library <work>.
+Module <SHIFTLEFT> is correct for synthesis.
+ 
+Analyzing module <SIGNEXTEND_BYTE> in library <work>.
+Module <SIGNEXTEND_BYTE> is correct for synthesis.
+ 
+Analyzing module <IMM2WORD> in library <work>.
+Module <IMM2WORD> is correct for synthesis.
+ 
+Analyzing module <ALUCTRL> in library <work>.
+WARNING:Xst:863 - "ALUCTRL.v" line 5: Name conflict (<aluop> and <ALUop>, renaming aluop as aluop_rnm0).
+WARNING:Xst:863 - "ALUCTRL.v" line 7: Name conflict (<shamt> and <Shamt>, renaming shamt as shamt_rnm0).
+WARNING:Xst:863 - "ALUCTRL.v" line 3: Name conflict (<functioncode> and <functionCode>, renaming functioncode as functioncode_rnm0).
+WARNING:Xst:863 - "ALUCTRL.v" line 9: Name conflict (<aluCtrl> and <ALUctrl>, renaming aluCtrl as aluctrl_rnm0).
+"ALUCTRL.v" line 26: Found Parallel Case directive in module <ALUCTRL>.
+"ALUCTRL.v" line 34: Found Parallel Case directive in module <ALUCTRL>.
+"ALUCTRL.v" line 42: Found Parallel Case directive in module <ALUCTRL>.
+"ALUCTRL.v" line 25: Found Parallel Case directive in module <ALUCTRL>.
+"ALUCTRL.v" line 19: Found Parallel Case directive in module <ALUCTRL>.
+WARNING:Xst:905 - "ALUCTRL.v" line 16: The signals <aluctrl_rnm0> are missing in the sensitivity list of always block.
+Module <ALUCTRL> is correct for synthesis.
+ 
+Analyzing module <ALU> in library <work>.
+"ALU.v" line 34: Found Parallel Case directive in module <ALU>.
+WARNING:Xst:905 - "ALU.v" line 26: The signals <zero> are missing in the sensitivity list of always block.
+Module <ALU> is correct for synthesis.
+ 
+Analyzing module <REGFILE16> in library <work>.
+Module <REGFILE16> is correct for synthesis.
+ 
+Analyzing module <BRAM512x32> in library <work>.
+Module <BRAM512x32> is correct for synthesis.
+ 
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_2A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_2B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_2C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_0B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_0C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_35 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_A =  000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_B =  000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "SIM_COLLISION_CHECK =  ALL" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "SRVAL_A =  000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "SRVAL_B =  000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "WRITE_MODE_A =  WRITE_FIRST" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "WRITE_MODE_B =  WRITE_FIRST" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_16 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_17 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_18 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_19 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_1A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_1B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_1C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_1D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_1E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_1F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_22 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_26 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_27 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_0D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_0E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_0F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_10 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_11 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_12 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_13 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_14 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+    Set user-defined property "INIT_15 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <bram> in unit <BRAM512x32>.
+Analyzing module <BRAM512x32_CONV> in library <work>.
+Module <BRAM512x32_CONV> is correct for synthesis.
+ 
+Analyzing module <ADD> in library <work>.
+Module <ADD> is correct for synthesis.
+ 
+Analyzing module <BRANCH_CTRL> in library <work>.
+WARNING:Xst:863 - "BRANCH_CTRL.v" line 3: Name conflict (<branchop> and <BranchOp>, renaming branchop as branchop_rnm0).
+WARNING:Xst:863 - "BRANCH_CTRL.v" line 7: Name conflict (<branch> and <Branch>, renaming branch as branch_rnm0).
+WARNING:Xst:863 - "BRANCH_CTRL.v" line 5: Name conflict (<aluzero> and <AluZero>, renaming aluzero as aluzero_rnm0).
+"BRANCH_CTRL.v" line 18: Found FullParallel Case directive in module <BRANCH_CTRL>.
+WARNING:Xst:905 - "BRANCH_CTRL.v" line 15: The signals <__tmp61, __tmp62, branch_rnm0> are missing in the sensitivity list of always block.
+Module <BRANCH_CTRL> is correct for synthesis.
+ 
+Analyzing module <HAZARD_CTRL> in library <work>.
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 49: Name conflict (<hilowrite> and <HiLoWrite>, renaming hilowrite as hilowrite_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 33: Name conflict (<target> and <Target>, renaming target as target_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 41: Name conflict (<aluop> and <ALUop>, renaming aluop as aluop_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 37: Name conflict (<memread> and <MemRead>, renaming memread as memread_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 3: Name conflict (<hazard> and <Hazard>, renaming hazard as hazard_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 35: Name conflict (<branch> and <Branch>, renaming branch as branch_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 29: Name conflict (<regdst> and <RegDst>, renaming regdst as regdst_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 47: Name conflict (<regwrite> and <RegWrite>, renaming regwrite as regwrite_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 31: Name conflict (<regvalue> and <RegValue>, renaming regvalue as regvalue_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 43: Name conflict (<memwrite> and <MemWrite>, renaming memwrite as memwrite_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 51: Name conflict (<hiloalusel> and <HiLoAluSel>, renaming hiloalusel as hiloalusel_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 45: Name conflict (<alusrc> and <ALUSrc>, renaming alusrc as alusrc_rnm0).
+WARNING:Xst:863 - "HAZARD_CTRL.v" line 39: Name conflict (<memtoreg> and <MemtoReg>, renaming memtoreg as memtoreg_rnm0).
+Module <HAZARD_CTRL> is correct for synthesis.
+ 
+Analyzing module <HAZARD> in library <work>.
+WARNING:Xst:863 - "HAZARD.v" line 23: Name conflict (<branchop> and <BranchOp>, renaming branchop as branchop_rnm0).
+WARNING:Xst:863 - "HAZARD.v" line 39: Name conflict (<ex_fw1> and <Ex_fw1>, renaming ex_fw1 as ex_fw1_rnm0).
+WARNING:Xst:863 - "HAZARD.v" line 41: Name conflict (<ex_fw2> and <Ex_fw2>, renaming ex_fw2 as ex_fw2_rnm0).
+WARNING:Xst:905 - "HAZARD.v" line 67: The signals <MEM_EX_READ, MEM_ID_READ, __tmp62, __tmp63> are missing in the sensitivity list of always block.
+Module <HAZARD> is correct for synthesis.
+ 
+Analyzing module <REGISTER_DWORD> in library <work>.
+Module <REGISTER_DWORD> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_MEMTOREG> in library <work>.
+Module <REGISTER_W_MEMTOREG> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_REGWRITE> in library <work>.
+Module <REGISTER_W_REGWRITE> is correct for synthesis.
+ 
+Analyzing module <REGISTER_AWORDREG> in library <work>.
+Module <REGISTER_AWORDREG> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_MEMREAD> in library <work>.
+Module <REGISTER_W_MEMREAD> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_MEMWRITE> in library <work>.
+Module <REGISTER_W_MEMWRITE> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_BRANCHOP> in library <work>.
+Module <REGISTER_W_BRANCHOP> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_HILOALU_S> in library <work>.
+Module <REGISTER_W_HILOALU_S> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_HILO_W> in library <work>.
+Module <REGISTER_W_HILO_W> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_TARGET> in library <work>.
+Module <REGISTER_W_TARGET> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_REGVAL> in library <work>.
+Module <REGISTER_W_REGVAL> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_REGDST> in library <work>.
+Module <REGISTER_W_REGDST> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_ALUOP> in library <work>.
+Module <REGISTER_W_ALUOP> is correct for synthesis.
+ 
+Analyzing module <REGISTER_W_ALUSRC> in library <work>.
+Module <REGISTER_W_ALUSRC> is correct for synthesis.
+ 
+Analyzing module <REGISTER_5> in library <work>.
+Module <REGISTER_5> is correct for synthesis.
+ 
+Analyzing module <REGISTER_6> in library <work>.
+Module <REGISTER_6> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:1304 - Contents of register <i__loop_38> in unit <IMM2WORD> never changes during circuit operation. The register is replaced by logic.
+INFO:Xst:1304 - Contents of register <i> in unit <IMM2WORD> never changes during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <MEMDEV>.
+    Related source file is "MEMDEV.v".
+WARNING:Xst:647 - Input <a_read_reg<30:3>> is never used.
+WARNING:Xst:647 - Input <a_read_reg<1:0>> is never used.
+WARNING:Xst:646 - Signal <send> is assigned but never used.
+WARNING:Xst:646 - Signal <addr> is assigned but never used.
+WARNING:Xst:646 - Signal <dev_select> is assigned but never used.
+WARNING:Xst:646 - Signal <r__1> is assigned but never used.
+WARNING:Xst:646 - Signal <__tmp61> is assigned but never used.
+WARNING:Xst:646 - Signal <__tmp62> is assigned but never used.
+WARNING:Xst:646 - Signal <__tmp63> is assigned but never used.
+WARNING:Xst:646 - Signal <__tmp64> is assigned but never used.
+WARNING:Xst:646 - Signal <reg_dev_select> is assigned but never used.
+WARNING:Xst:646 - Signal <eop> is assigned but never used.
+WARNING:Xst:646 - Signal <s> is assigned but never used.
+WARNING:Xst:646 - Signal <rd> is assigned but never used.
+WARNING:Xst:646 - Signal <status> is assigned but never used.
+WARNING:Xst:646 - Signal <z2> is assigned but never used.
+WARNING:Xst:646 - Signal <addr_reg> is assigned but never used.
+WARNING:Xst:646 - Signal <wr> is assigned but never used.
+    Found 32-bit register for signal <dev_buffer>.
+    Found 1-bit register for signal <sending>.
+    Summary:
+	inferred  33 D-type flip-flop(s).
+Unit <MEMDEV> synthesized.
+
+
+Synthesizing Unit <MUX4>.
+    Related source file is "MUX4.v".
+WARNING:Xst:646 - Signal <sel_t> is assigned but never used.
+WARNING:Xst:646 - Signal <data> is assigned but never used.
+    Found 32-bit 4-to-1 multiplexer for signal <$old_data_9>.
+    Summary:
+	inferred  32 Multiplexer(s).
+Unit <MUX4> synthesized.
+
+
+Synthesizing Unit <MUX3>.
+    Related source file is "MUX3.v".
+WARNING:Xst:646 - Signal <sel_t> is assigned but never used.
+WARNING:Xst:646 - Signal <data> is assigned but never used.
+    Found 32-bit 4-to-1 multiplexer for signal <$old_data_10>.
+    Summary:
+	inferred  32 Multiplexer(s).
+Unit <MUX3> synthesized.
+
+
+Synthesizing Unit <MUX2>.
+    Related source file is "MUX2.v".
+WARNING:Xst:646 - Signal <data> is assigned but never used.
+Unit <MUX2> synthesized.
+
+
+Synthesizing Unit <MUX3_AWORDREG>.
+    Related source file is "MUX3_AWORDREG.v".
+WARNING:Xst:646 - Signal <sel_t> is assigned but never used.
+WARNING:Xst:646 - Signal <data> is assigned but never used.
+    Found 5-bit 4-to-1 multiplexer for signal <$old_data_12>.
+    Summary:
+	inferred   5 Multiplexer(s).
+Unit <MUX3_AWORDREG> synthesized.
+
+
+Synthesizing Unit <DECODER_NBUF>.
+    Related source file is "DECODER_NBUF.v".
+WARNING:Xst:646 - Signal <t_instr> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_20_16> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_25_21> is assigned but never used.
+Unit <DECODER_NBUF> synthesized.
+
+
+Synthesizing Unit <DECODER>.
+    Related source file is "DECODER.v".
+WARNING:Xst:646 - Signal <t_instr> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_25_0> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_5_0> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_15_0> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_31_26> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_15_11> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_20_16> is assigned but never used.
+WARNING:Xst:646 - Signal <t_instr_10_6> is assigned but never used.
+Unit <DECODER> synthesized.
+
+
+Synthesizing Unit <CTRL>.
+    Related source file is "CTRL.v".
+WARNING:Xst:646 - Signal <__tmp61<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <functioncode_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <opcode_rnm0> is assigned but never used.
+    Found 4x1-bit ROM for signal <ALUSrc<0>>.
+    Found 4x1-bit ROM for signal <SignExtend<0>>.
+WARNING:Xst:737 - Found 1-bit latch for signal <HiLoWrite_0>.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 2-bit latch for signal <HiLoAluSel>.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Summary:
+	inferred   2 ROM(s).
+Unit <CTRL> synthesized.
+
+
+Synthesizing Unit <SHIFTLEFT>.
+    Related source file is "SHIFTLEFT.v".
+WARNING:Xst:646 - Signal <a> is assigned but never used.
+WARNING:Xst:646 - Signal <b> is assigned but never used.
+Unit <SHIFTLEFT> synthesized.
+
+
+Synthesizing Unit <SIGNEXTEND_BYTE>.
+    Related source file is "SIGNEXTEND_BYTE.v".
+WARNING:Xst:1780 - Signal <i__loop_57> is never used or assigned.
+WARNING:Xst:646 - Signal <a> is assigned but never used.
+WARNING:Xst:646 - Signal <b> is assigned but never used.
+WARNING:Xst:646 - Signal <i> is assigned but never used.
+Unit <SIGNEXTEND_BYTE> synthesized.
+
+
+Synthesizing Unit <IMM2WORD>.
+    Related source file is "IMM2WORD.v".
+WARNING:Xst:1780 - Signal <i__loop_38> is never used or assigned.
+WARNING:Xst:646 - Signal <a> is assigned but never used.
+WARNING:Xst:646 - Signal <b> is assigned but never used.
+WARNING:Xst:646 - Signal <i> is assigned but never used.
+WARNING:Xst:646 - Signal <zero> is assigned but never used.
+Unit <IMM2WORD> synthesized.
+
+
+Synthesizing Unit <ALUCTRL>.
+    Related source file is "ALUCTRL.v".
+WARNING:Xst:646 - Signal <aluop_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <functioncode_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <aluctrl_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <shamt_rnm0> is assigned but never used.
+Unit <ALUCTRL> synthesized.
+
+
+Synthesizing Unit <ALU>.
+    Related source file is "ALU.v".
+WARNING:Xst:646 - Signal <s_int> is assigned but never used.
+WARNING:Xst:646 - Signal <result> is assigned but never used.
+WARNING:Xst:646 - Signal <c> is assigned but never used.
+WARNING:Xst:646 - Signal <s> is assigned but never used.
+WARNING:Xst:646 - Signal <t> is assigned but never used.
+WARNING:Xst:646 - Signal <sign<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <t_int> is assigned but never used.
+WARNING:Xst:646 - Signal <result_hi> is assigned but never used.
+WARNING:Xst:646 - Signal <ctrl_t> is assigned but never used.
+WARNING:Xst:646 - Signal <zero<0>> is assigned but never used.
+WARNING:Xst:737 - Found 1-bit latch for signal <$old_zero_19_0>.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 32-bit adder for signal <$add0000> created at line 38.
+    Found 32-bit comparator less for signal <$cmp_lt0000> created at line 60.
+    Found 32-bit comparator less for signal <$cmp_lt0001> created at line 70.
+    Found 32x32-bit multiplier for signal <$old_c_17>.
+    Found 32-bit subtractor for signal <$sub0000> created at line 53.
+    Found 1-bit xor2 for signal <$xor0005> created at line 51.
+    Found 1-bit xor2 for signal <$xor0010> created at line 51.
+    Found 1-bit xor2 for signal <$xor0016> created at line 51.
+    Found 1-bit xor2 for signal <$xor0020> created at line 51.
+    Found 1-bit xor2 for signal <$xor0023> created at line 51.
+    Found 1-bit xor2 for signal <$xor0026> created at line 51.
+    Found 1-bit xor2 for signal <$xor0029> created at line 51.
+    Found 1-bit xor2 for signal <$xor0032> created at line 51.
+    Found 1-bit xor2 for signal <$xor0037> created at line 51.
+    Found 1-bit xor2 for signal <$xor0040> created at line 51.
+    Found 1-bit xor2 for signal <$xor0043> created at line 51.
+    Found 1-bit xor2 for signal <$xor0046> created at line 51.
+    Found 1-bit xor2 for signal <$xor0049> created at line 51.
+    Found 1-bit xor2 for signal <$xor0052> created at line 51.
+    Found 1-bit xor2 for signal <$xor0055> created at line 51.
+    Found 1-bit xor2 for signal <$xor0058> created at line 51.
+    Found 1-bit xor2 for signal <$xor0062> created at line 51.
+    Found 1-bit xor2 for signal <$xor0065> created at line 51.
+    Found 1-bit xor2 for signal <$xor0068> created at line 51.
+    Found 1-bit xor2 for signal <$xor0071> created at line 51.
+    Found 1-bit xor2 for signal <$xor0074> created at line 51.
+    Found 1-bit xor2 for signal <$xor0077> created at line 51.
+    Found 1-bit xor2 for signal <$xor0080> created at line 51.
+    Found 1-bit xor2 for signal <$xor0083> created at line 51.
+    Found 1-bit xor2 for signal <$xor0087> created at line 51.
+    Found 1-bit xor2 for signal <$xor0090> created at line 51.
+    Found 1-bit xor2 for signal <$xor0093> created at line 51.
+    Found 1-bit xor2 for signal <$xor0096> created at line 51.
+    Found 1-bit xor2 for signal <$xor0099> created at line 51.
+    Found 1-bit xor2 for signal <$xor0102> created at line 51.
+    Found 1-bit xor2 for signal <$xor0106> created at line 51.
+    Found 1-bit xor2 for signal <$xor0110> created at line 51.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred   2 Comparator(s).
+Unit <ALU> synthesized.
+
+
+Synthesizing Unit <ADD>.
+    Related source file is "ADD.v".
+WARNING:Xst:646 - Signal <a_t> is assigned but never used.
+WARNING:Xst:646 - Signal <b_t> is assigned but never used.
+WARNING:Xst:646 - Signal <r_t> is assigned but never used.
+    Found 32-bit adder for signal <$old_r_t_22>.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <ADD> synthesized.
+
+
+Synthesizing Unit <BRANCH_CTRL>.
+    Related source file is "BRANCH_CTRL.v".
+WARNING:Xst:646 - Signal <__tmp61<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <__tmp62<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <aluzero_rnm0<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <branchop_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <branch_rnm0<0>> is assigned but never used.
+    Found 1-bit 4-to-1 multiplexer for signal <$old_branch_rnm0_25<0>>.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <BRANCH_CTRL> synthesized.
+
+
+Synthesizing Unit <HAZARD_CTRL>.
+    Related source file is "HAZARD_CTRL.v".
+WARNING:Xst:646 - Signal <aluop_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <memwrite_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <hiloalusel_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <regwrite_rnm0<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <regdst_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <regvalue_rnm0<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <hilowrite_rnm0<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <alusrc_rnm0<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <target_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <memtoreg_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <branch_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <hazard_rnm0<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <memread_rnm0> is assigned but never used.
+Unit <HAZARD_CTRL> synthesized.
+
+
+Synthesizing Unit <HAZARD>.
+    Related source file is "HAZARD.v".
+WARNING:Xst:646 - Signal <bus_ex_ctrl_mem_memread> is assigned but never used.
+WARNING:Xst:646 - Signal <bus_id_ctrl_mem_memread> is assigned but never used.
+WARNING:Xst:646 - Signal <__tmp62<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <__tmp63<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <hazard__1<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <ifidreadregister1_t> is assigned but never used.
+WARNING:Xst:646 - Signal <ifidreadregister2_t> is assigned but never used.
+WARNING:Xst:646 - Signal <ex_fw1_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <idexwriteregisterrd_t> is assigned but never used.
+WARNING:Xst:646 - Signal <idexwriteregisterrt_t> is assigned but never used.
+WARNING:Xst:646 - Signal <ex_fw2_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <branchop_rnm0> is assigned but never used.
+WARNING:Xst:646 - Signal <idexregdst_t> is assigned but never used.
+WARNING:Xst:646 - Signal <instr_t> is assigned but never used.
+WARNING:Xst:646 - Signal <idexregwrite_t<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <exmemwriteregister_t> is assigned but never used.
+WARNING:Xst:646 - Signal <memwbregwrite_t<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <memwbwriteregister_t> is assigned but never used.
+WARNING:Xst:646 - Signal <exmemregwrite_t<0>> is assigned but never used.
+    Found 4x1-bit ROM for signal <pipe_en<0>>.
+    Found 5-bit comparator equal for signal <$cmp_eq0001> created at line 91.
+    Found 5-bit comparator equal for signal <$cmp_eq0002> created at line 95.
+    Found 5-bit comparator equal for signal <$cmp_eq0005> created at line 99.
+    Found 5-bit comparator equal for signal <$cmp_eq0007> created at line 99.
+    Found 5-bit comparator equal for signal <$cmp_eq0008> created at line 103.
+    Found 5-bit comparator equal for signal <$cmp_eq0009> created at line 103.
+    Found 5-bit comparator equal for signal <$cmp_eq0010> created at line 107.
+    Found 5-bit comparator equal for signal <$cmp_eq0011> created at line 109.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   8 Comparator(s).
+Unit <HAZARD> synthesized.
+
+
+Synthesizing Unit <REGISTER_DWORD>.
+    Related source file is "REGISTER_DWORD.v".
+    Found 32-bit register for signal <out>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <REGISTER_DWORD> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_MEMTOREG>.
+    Related source file is "REGISTER_W_MEMTOREG.v".
+    Found 2-bit register for signal <out>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <REGISTER_W_MEMTOREG> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_REGWRITE>.
+    Related source file is "REGISTER_W_REGWRITE.v".
+    Found 1-bit register for signal <out<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <REGISTER_W_REGWRITE> synthesized.
+
+
+Synthesizing Unit <REGISTER_AWORDREG>.
+    Related source file is "REGISTER_AWORDREG.v".
+    Found 5-bit register for signal <out>.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+Unit <REGISTER_AWORDREG> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_MEMREAD>.
+    Related source file is "REGISTER_W_MEMREAD.v".
+    Found 2-bit register for signal <out>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <REGISTER_W_MEMREAD> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_MEMWRITE>.
+    Related source file is "REGISTER_W_MEMWRITE.v".
+    Found 2-bit register for signal <out>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <REGISTER_W_MEMWRITE> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_BRANCHOP>.
+    Related source file is "REGISTER_W_BRANCHOP.v".
+    Found 2-bit register for signal <out>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <REGISTER_W_BRANCHOP> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_HILOALU_S>.
+    Related source file is "REGISTER_W_HILOALU_S.v".
+    Found 2-bit register for signal <out>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <REGISTER_W_HILOALU_S> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_HILO_W>.
+    Related source file is "REGISTER_W_HILO_W.v".
+    Found 1-bit register for signal <out<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <REGISTER_W_HILO_W> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_TARGET>.
+    Related source file is "REGISTER_W_TARGET.v".
+    Found 2-bit register for signal <out>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <REGISTER_W_TARGET> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_REGVAL>.
+    Related source file is "REGISTER_W_REGVAL.v".
+    Found 1-bit register for signal <out<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <REGISTER_W_REGVAL> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_REGDST>.
+    Related source file is "REGISTER_W_REGDST.v".
+    Found 2-bit register for signal <out>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <REGISTER_W_REGDST> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_ALUOP>.
+    Related source file is "REGISTER_W_ALUOP.v".
+    Found 5-bit register for signal <out>.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+Unit <REGISTER_W_ALUOP> synthesized.
+
+
+Synthesizing Unit <REGISTER_W_ALUSRC>.
+    Related source file is "REGISTER_W_ALUSRC.v".
+    Found 1-bit register for signal <out<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <REGISTER_W_ALUSRC> synthesized.
+
+
+Synthesizing Unit <REGISTER_5>.
+    Related source file is "REGISTER_5.v".
+    Found 5-bit register for signal <out>.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+Unit <REGISTER_5> synthesized.
+
+
+Synthesizing Unit <REGISTER_6>.
+    Related source file is "REGISTER_6.v".
+    Found 6-bit register for signal <out>.
+    Summary:
+	inferred   6 D-type flip-flop(s).
+Unit <REGISTER_6> synthesized.
+
+
+Synthesizing Unit <BRAM512x32_CONV>.
+    Related source file is "BRAM512x32_CONV.v".
+WARNING:Xst:647 - Input <DOB> is never used.
+WARNING:Xst:647 - Input <DOPA> is never used.
+WARNING:Xst:647 - Input <DOPB> is never used.
+WARNING:Xst:646 - Signal <zero4> is assigned but never used.
+WARNING:Xst:646 - Signal <c> is assigned but never used.
+WARNING:Xst:646 - Signal <w_addr9> is assigned but never used.
+WARNING:Xst:646 - Signal <dwr> is assigned but never used.
+WARNING:Xst:646 - Signal <r_addr9> is assigned but never used.
+WARNING:Xst:646 - Signal <data> is assigned but never used.
+Unit <BRAM512x32_CONV> synthesized.
+
+
+Synthesizing Unit <BRAM512x32>.
+    Related source file is "BRAM512x32.v".
+Unit <BRAM512x32> synthesized.
+
+
+Synthesizing Unit <REGFILE16>.
+    Related source file is "REGFILE16.v".
+Unit <REGFILE16> synthesized.
+
+
+Synthesizing Unit <mMIPS>.
+    Related source file is "mMIPS.v".
+WARNING:Xst:646 - Signal <VCC<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <bus_ctrl_c1<0>> is assigned but never used.
+WARNING:Xst:646 - Signal <GND<0>> is assigned but never used.
+Unit <mMIPS> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 3
+ 4x1-bit ROM                                           : 3
+# Multipliers                                          : 1
+ 32x32-bit multiplier                                  : 1
+# Adders/Subtractors                                   : 4
+ 32-bit adder                                          : 3
+ 32-bit subtractor                                     : 1
+# Registers                                            : 38
+ 1-bit register                                        : 7
+ 2-bit register                                        : 10
+ 32-bit register                                       : 14
+ 5-bit register                                        : 6
+ 6-bit register                                        : 1
+# Latches                                              : 3
+ 1-bit latch                                           : 2
+ 2-bit latch                                           : 1
+# Comparators                                          : 10
+ 32-bit comparator less                                : 2
+ 5-bit comparator equal                                : 8
+# Multiplexers                                         : 7
+ 1-bit 4-to-1 multiplexer                              : 1
+ 32-bit 4-to-1 multiplexer                             : 5
+ 5-bit 4-to-1 multiplexer                              : 1
+# Xors                                                 : 32
+ 1-bit xor2                                            : 32
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Loading device for application Rf_Device from file '2v3000.nph' in environment /home/xilinx/xilinx-8.2i/.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 3
+ 4x1-bit ROM                                           : 3
+# Multipliers                                          : 1
+ 32x32-bit multiplier                                  : 1
+# Adders/Subtractors                                   : 4
+ 32-bit adder                                          : 3
+ 32-bit subtractor                                     : 1
+# Registers                                            : 104
+ Flip-Flops                                            : 104
+# Latches                                              : 3
+ 1-bit latch                                           : 2
+ 2-bit latch                                           : 1
+# Comparators                                          : 10
+ 32-bit comparator less                                : 2
+ 5-bit comparator equal                                : 8
+# Multiplexers                                         : 7
+ 1-bit 4-to-1 multiplexer                              : 1
+ 32-bit 4-to-1 multiplexer                             : 5
+ 5-bit 4-to-1 multiplexer                              : 1
+# Xors                                                 : 32
+ 1-bit xor2                                            : 32
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <mMIPS> ...
+
+Optimizing unit <ALUCTRL> ...
+
+Optimizing unit <CTRL> ...
+
+Optimizing unit <MUX2> ...
+
+Optimizing unit <HAZARD_CTRL> ...
+
+Optimizing unit <HAZARD> ...
+
+Optimizing unit <REGISTER_DWORD> ...
+
+Optimizing unit <MEMDEV> ...
+
+Optimizing unit <ALU> ...
+
+Mapping all equations...
+WARNING:Xst:1710 - FF/Latch  <id_ctrl_ex_aluop/out_4> (without init value) has a constant value of 0 in block <mMIPS>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <id_instr_25_0/out_26> (without init value) has a constant value of 0 in block <mMIPS>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <id_instr_25_0/out_27> (without init value) has a constant value of 0 in block <mMIPS>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <id_instr_25_0/out_28> (without init value) has a constant value of 0 in block <mMIPS>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <id_instr_25_0/out_29> (without init value) has a constant value of 0 in block <mMIPS>.
+WARNING:Xst:1291 - FF/Latch <id_instr_25_0/out_30> is unconnected in block <mMIPS>.
+WARNING:Xst:1291 - FF/Latch <id_instr_25_0/out_31> is unconnected in block <mMIPS>.
+Building and optimizing final netlist ...
+INFO:Xst:2261 - The FF/Latch <id_instr_10_6/out_3> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_9> <id_instr_25_0/out_9> 
+INFO:Xst:2261 - The FF/Latch <id_instr_5_0/out_4> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_4> <id_instr_25_0/out_4> 
+INFO:Xst:2261 - The FF/Latch <id_instr_20_16/out_1> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <id_instr_25_0/out_17> 
+INFO:Xst:2261 - The FF/Latch <id_ctrl_wb_memtoreg/out_0> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <id_ctrl_mem_memread/out_0> 
+INFO:Xst:2261 - The FF/Latch <id_instr_20_16/out_0> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <id_instr_25_0/out_16> 
+INFO:Xst:2261 - The FF/Latch <id_instr_5_0/out_3> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_3> <id_instr_25_0/out_3> 
+INFO:Xst:2261 - The FF/Latch <id_instr_5_0/out_2> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_2> <id_instr_25_0/out_2> 
+INFO:Xst:2261 - The FF/Latch <id_instr_5_0/out_1> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_1> <id_instr_25_0/out_1> 
+INFO:Xst:2261 - The FF/Latch <id_instr_15_11/out_4> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_15> <id_instr_25_0/out_15> 
+INFO:Xst:2261 - The FF/Latch <id_immediate/out_16> in Unit <mMIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <id_immediate/out_17> <id_immediate/out_18> <id_immediate/out_19> <id_immediate/out_20> <id_immediate/out_21> <id_immediate/out_22> <id_immediate/out_23> <id_immediate/out_24> <id_immediate/out_25> <id_immediate/out_26> <id_immediate/out_27> <id_immediate/out_28> <id_immediate/out_29> <id_immediate/out_30> <id_immediate/out_31> 
+INFO:Xst:2261 - The FF/Latch <id_instr_15_11/out_3> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_14> <id_instr_25_0/out_14> 
+INFO:Xst:2261 - The FF/Latch <id_instr_15_11/out_2> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_13> <id_instr_25_0/out_13> 
+INFO:Xst:2261 - The FF/Latch <id_instr_15_11/out_1> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_12> <id_instr_25_0/out_12> 
+INFO:Xst:2261 - The FF/Latch <id_instr_15_11/out_0> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_11> <id_instr_25_0/out_11> 
+INFO:Xst:2261 - The FF/Latch <id_instr_10_6/out_2> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_8> <id_instr_25_0/out_8> 
+INFO:Xst:2261 - The FF/Latch <id_instr_10_6/out_0> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_6> <id_instr_25_0/out_6> 
+INFO:Xst:2261 - The FF/Latch <id_instr_20_16/out_4> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <id_instr_25_0/out_20> 
+INFO:Xst:2261 - The FF/Latch <id_instr_20_16/out_3> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <id_instr_25_0/out_19> 
+INFO:Xst:2261 - The FF/Latch <id_instr_5_0/out_0> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_0> <id_instr_25_0/out_0> 
+INFO:Xst:2261 - The FF/Latch <id_instr_10_6/out_4> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_10> <id_instr_25_0/out_10> 
+INFO:Xst:2261 - The FF/Latch <id_instr_10_6/out_1> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_7> <id_instr_25_0/out_7> 
+INFO:Xst:2261 - The FF/Latch <id_instr_5_0/out_5> in Unit <mMIPS> is equivalent to the following 2 FFs/Latches, which will be removed : <id_immediate/out_5> <id_instr_25_0/out_5> 
+INFO:Xst:2261 - The FF/Latch <id_instr_20_16/out_2> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <id_instr_25_0/out_18> 
+INFO:Xst:2261 - The FF/Latch <id_ctrl_wb_memtoreg/out_1> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <id_ctrl_mem_memread/out_1> 
+INFO:Xst:2261 - The FF/Latch <ex_ctrl_wb_memtoreg/out_1> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <ex_ctrl_memread/out_1> 
+INFO:Xst:2261 - The FF/Latch <ex_ctrl_wb_memtoreg/out_0> in Unit <mMIPS> is equivalent to the following FF/Latch, which will be removed : <ex_ctrl_memread/out_0> 
+FlipFlop id_ctrl_ex_alusrc/out_0 has been replicated 3 time(s)
+FlipFlop id_immediate/out_16 has been replicated 2 time(s)
+FlipFlop id_instr_5_0/out_0 has been replicated 2 time(s)
+FlipFlop id_instr_5_0/out_5 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 456
+ Flip-Flops                                            : 456
+
+=========================================================================
+
+=========================================================================
+*                          Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+Top Level Output File Name         : mmips.ngc
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : no
+
+Design Statistics
+# IOs                              : 242
+
+Cell Usage :
+# BELS                             : 1965
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 45
+#      LUT2                        : 209
+#      LUT2_L                      : 10
+#      LUT3                        : 274
+#      LUT3_D                      : 8
+#      LUT3_L                      : 25
+#      LUT4                        : 698
+#      LUT4_D                      : 19
+#      LUT4_L                      : 91
+#      MUXCY                       : 264
+#      MUXF5                       : 118
+#      VCC                         : 1
+#      XORCY                       : 200
+# FlipFlops/Latches                : 460
+#      FDCE                        : 423
+#      FDE                         : 32
+#      FDSE                        : 1
+#      LD                          : 4
+# RAMS                             : 2
+#      RAMB16_S36_S36              : 2
+# MULTs                            : 4
+#      MULT18X18                   : 4
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2v3000fg676-4 
+
+ Number of Slices:                     734  out of  14336     5%  
+ Number of Slice Flip Flops:           460  out of  28672     1%  
+ Number of 4 input LUTs:              1381  out of  28672     4%  
+ Number of IOs:                        242
+ Number of bonded IOBs:                  0  out of    484     0%  
+ Number of BRAMs:                        2  out of     96     2%  
+ Number of MULT18X18s:                   4  out of     96     4%  
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+----------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)      | Load  |
+-----------------------------------+----------------------------+-------+
+clk                                | NONE(memdev/dev_buffer_1)  | 460   |
+ctrl/_not0003(ctrl/_not000374:O)   | NONE(*)(ctrl/HiLoAluSel_1) | 3     |
+alu/_not0002(alu/_not00021:O)      | NONE(*)(alu/_old_zero_19_0)| 1     |
+-----------------------------------+----------------------------+-------+
+(*) These 2 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst                                | NONE                   | 423   |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 20.237ns (Maximum Frequency: 49.414MHz)
+   Minimum input arrival time before clock: 4.456ns
+   Maximum output required time after clock: 19.308ns
+   Maximum combinational path delay: 1.844ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 20.237ns (frequency: 49.414MHz)
+  Total number of paths / destination ports: 4198027 / 915
+-------------------------------------------------------------------------
+Delay:               20.237ns (Levels of Logic = 23)
+  Source:            id_immediate/out_16_1 (FF)
+  Destination:       hi/out_31 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: id_immediate/out_16_1 to hi/out_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q            15   0.568   1.197  id_immediate/out_16_1 (id_immediate/out_16_1)
+     LUT3:I1->O           10   0.439   0.885  mux2/_old_data_11<16>1 (bus_mux2<16>)
+     MULT18X18:B16->P30    1   9.321   0.802  alu/Mmult__old_c_17_submult_2 (alu/Mmult__old_c_17_submult_2_30)
+     LUT2:I0->O            1   0.439   0.000  alu/Mmult__old_c_17_Madd_lut<32> (alu/N166)
+     MUXCY:S->O            1   0.298   0.000  alu/Mmult__old_c_17_Madd_cy<32> (alu/Mmult__old_c_17_Madd_cy<32>)
+     XORCY:CI->O           1   1.274   0.726  alu/Mmult__old_c_17_Madd_xor<33> (alu/Mmult__old_c_17_Madd_48)
+     LUT2:I1->O            1   0.439   0.000  alu/Mmult__old_c_17_Madd1_lut<48> (alu/N199)
+     MUXCY:S->O            1   0.298   0.000  alu/Mmult__old_c_17_Madd1_cy<48> (alu/Mmult__old_c_17_Madd1_cy<48>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<49> (alu/Mmult__old_c_17_Madd1_cy<49>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<50> (alu/Mmult__old_c_17_Madd1_cy<50>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<51> (alu/Mmult__old_c_17_Madd1_cy<51>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<52> (alu/Mmult__old_c_17_Madd1_cy<52>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<53> (alu/Mmult__old_c_17_Madd1_cy<53>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<54> (alu/Mmult__old_c_17_Madd1_cy<54>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<55> (alu/Mmult__old_c_17_Madd1_cy<55>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<56> (alu/Mmult__old_c_17_Madd1_cy<56>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<57> (alu/Mmult__old_c_17_Madd1_cy<57>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<58> (alu/Mmult__old_c_17_Madd1_cy<58>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<59> (alu/Mmult__old_c_17_Madd1_cy<59>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<60> (alu/Mmult__old_c_17_Madd1_cy<60>)
+     MUXCY:CI->O           1   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<61> (alu/Mmult__old_c_17_Madd1_cy<61>)
+     MUXCY:CI->O           0   0.053   0.000  alu/Mmult__old_c_17_Madd1_cy<62> (alu/Mmult__old_c_17_Madd1_cy<62>)
+     XORCY:CI->O           1   1.274   0.725  alu/Mmult__old_c_17_Madd1_xor<63> (alu/_old_c_17<63>)
+     LUT2:I1->O            1   0.439   0.000  alu/_old_result_hi_18<31>1 (bus_alu_result_2<31>)
+     FDCE:D                    0.370          hi/out_31
+    ----------------------------------------
+    Total                     20.237ns (15.901ns logic, 4.336ns route)
+                                       (78.6% logic, 21.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 1186 / 458
+-------------------------------------------------------------------------
+Offset:              4.456ns (Levels of Logic = 3)
+  Source:            ram_wait (PAD)
+  Destination:       registers/regs1/bram (RAM)
+  Destination Clock: clk rising
+
+  Data Path: ram_wait to registers/regs1/bram
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LUT2:I1->O            3   0.439   0.932  memdev/dmem_wait1 (bus_dmem_wait)
+     LUT4:I1->O           74   0.439   1.481  hazard/_mux00041 (bus_hazard_ifidwrite)
+     LUT3:I0->O            1   0.439   0.517  mux7/_old_data_11<20>1 (bus_mux7<20>)
+     RAMB16_S36_S36:ADDRA4        0.000          registers/regs2/bram
+    ----------------------------------------
+    Total                      4.456ns (1.525ns logic, 2.931ns route)
+                                       (34.2% logic, 65.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 312213 / 138
+-------------------------------------------------------------------------
+Offset:              19.308ns (Levels of Logic = 9)
+  Source:            id_immediate/out_16_1 (FF)
+  Destination:       dev_send_eop (PAD)
+  Source Clock:      clk rising
+
+  Data Path: id_immediate/out_16_1 to dev_send_eop
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q            15   0.568   1.197  id_immediate/out_16_1 (id_immediate/out_16_1)
+     LUT3:I1->O           10   0.439   0.885  mux2/_old_data_11<16>1 (bus_mux2<16>)
+     MULT18X18:B16->P30    1   9.321   0.726  alu/Mmult__old_c_17_submult_0 (alu/Mmult__old_c_17_submult_0_30)
+     LUT2:I1->O            1   0.439   0.000  alu/Mmult__old_c_17_Madd1_lut<30> (alu/N181)
+     MUXCY:S->O            1   0.298   0.000  alu/Mmult__old_c_17_Madd1_cy<30> (alu/Mmult__old_c_17_Madd1_cy<30>)
+     XORCY:CI->O           1   1.274   0.557  alu/Mmult__old_c_17_Madd1_xor<31> (alu/_old_c_17<31>)
+     LUT4_D:I3->O          5   0.439   0.805  alu/_mux0002168 (alu/_mux0002_map3803)
+     LUT4_L:I2->LO         1   0.439   0.134  mux6/_old_data_11<31>39_1 (mux6/_old_data_11<31>39)
+     LUT4:I2->O            2   0.439   0.910  memdev/n_sending21 (dev_w)
+     LUT2:I1->O            0   0.439   0.000  memdev/dev_send_eop1 (dev_send_eop)
+    ----------------------------------------
+    Total                     19.308ns (14.095ns logic, 5.214ns route)
+                                       (73.0% logic, 27.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'alu/_not0002'
+  Total number of paths / destination ports: 38 / 32
+-------------------------------------------------------------------------
+Offset:              4.179ns (Levels of Logic = 3)
+  Source:            alu/_old_zero_19_0 (LATCH)
+  Destination:       rom_addr<31> (PAD)
+  Source Clock:      alu/_not0002 falling
+
+  Data Path: alu/_old_zero_19_0 to rom_addr<31>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.674   0.803  alu/_old_zero_19_0 (alu/_old_zero_19_0)
+     LUT3:I0->O           38   0.439   1.388  bus_branch_ctrl1 (bus_branch_ctrl)
+     LUT4:I0->O            1   0.439   0.000  mux1/_old_data_11<29>2 (N9041)
+     MUXF5:I0->O           1   0.436   0.000  mux1/_old_data_11<29>_f5 (rom_addr<29>)
+    ----------------------------------------
+    Total                      4.179ns (1.988ns logic, 2.191ns route)
+                                       (47.6% logic, 52.4% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 3 / 1
+-------------------------------------------------------------------------
+Delay:               1.844ns (Levels of Logic = 2)
+  Source:            ram_wait (PAD)
+  Destination:       rom_r<0> (PAD)
+
+  Data Path: ram_wait to rom_r<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LUT2:I1->O            3   0.439   0.758  memdev/dmem_wait1 (bus_dmem_wait)
+     LUT4:I2->O            0   0.439   0.000  hazard/_mux00021 (rom_r<0>)
+    ----------------------------------------
+    Total                      1.844ns (1.086ns logic, 0.758ns route)
+                                       (58.9% logic, 41.1% route)
+
+=========================================================================
+CPU : 42.29 / 42.32 s | Elapsed : 43.00 / 43.00 s
+ 
+--> 
+
+
+Total memory usage is 157120 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  161 (   0 filtered)
+Number of infos    :   32 (   0 filtered)
+

@@ -50,6 +50,22 @@ SC_MODULE(MUX3) {
 	}
 };
 
+SC_MODULE(MUX4) {
+	sc_in< 	sc_bv<DWORD> > 	in0;	// First input
+	sc_in< 	sc_bv<DWORD> > 	in1;	// Second input
+	sc_in< 	sc_bv<DWORD> >	in2;	// Third bit
+	sc_in< 	sc_bv<DWORD> > 	in3;	// Fourth input
+	sc_in< 	sc_bv<2> >		sel;	// Selection bit
+	sc_out< sc_bv<DWORD> > 	out;	// Output
+	
+	void mux();
+	
+	SC_CTOR(MUX4) {
+		SC_METHOD(mux);
+		sensitive << in0 <<in1 << in2 << in3 << sel;
+	}
+};
+
 SC_MODULE(MUX3_AWORDREG) {
 	sc_in< 	sc_bv<AWORDREG> > 	in0;	// First input
 	sc_in< 	sc_bv<AWORDREG> > 	in1;	// Second input

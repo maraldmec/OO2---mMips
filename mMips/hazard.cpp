@@ -70,23 +70,23 @@ void HAZARD::hazard()
 	else
 	{
 		// No hazard
-		if (exmemregwrite_t == 1 && bus_ex_ctrl_mem_memread==1 &&
+		if (exmemregwrite_t == 1 && bus_ex_ctrl_mem_memread!=0 &&
 				(exmemwriteregister_t == ifidreadregister1_t))
 			{
 				hazard=1;
 			}
-		else if (exmemregwrite_t == 1 && bus_ex_ctrl_mem_memread==1 &&
+		else if (exmemregwrite_t == 1 && bus_ex_ctrl_mem_memread!=0 &&
 				(exmemwriteregister_t == ifidreadregister2_t))
 			{
 				hazard=1;
 			}
-		else if (idexregwrite_t == 1 &&  bus_id_ctrl_mem_memread==1 &&
+		else if (idexregwrite_t == 1 &&  bus_id_ctrl_mem_memread!=0 &&
 				((idexregdst_t == 0 && idexwriteregisterrt_t == ifidreadregister1_t) || 
 				(idexregdst_t == 1 && idexwriteregisterrd_t == ifidreadregister1_t)))
 			{
 				hazard=1;
 			} 
-		else if (idexregwrite_t == 1 &&  bus_id_ctrl_mem_memread==1 &&
+		else if (idexregwrite_t == 1 &&  bus_id_ctrl_mem_memread!=0 &&
 				((idexregdst_t == 0 && idexwriteregisterrt_t == ifidreadregister2_t) || 
 				(idexregdst_t == 1 && idexwriteregisterrd_t == ifidreadregister2_t)))
 			{

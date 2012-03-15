@@ -34,8 +34,10 @@ SC_MODULE(HAZARD) {
 	sc_in< 	sc_bv<AWORDREG> >			MEMWBWriteRegister;
 	sc_in< 	sc_bv<DWORD> >				Instr;
 	sc_in<	sc_bv<W_BRANCHOP> >			BranchOp;
+	sc_in<	sc_bv<1> >			HAZARD_DIV;
 	sc_in< sc_bv<W_MEMREAD>		> MEM_EX_READ;
 	sc_in< sc_bv<W_MEMREAD>		> MEM_ID_READ;
+
 
 	sc_in< bool >                       dmem_wait, imem_wait;
 
@@ -44,7 +46,7 @@ SC_MODULE(HAZARD) {
 	sc_out< sc_bv<W_HAZARDFLAG> >		Hazard;
 	sc_out< sc_bv<2> >					Ex_fw1;
 	sc_out< sc_bv<2> >					Ex_fw2;
-	sc_out< sc_bv<1> >                  pipe_en, imem_en;
+	sc_out< sc_bv<1> >                  pipe_en, imem_en, pipe_en_and;
 	
 	void hazard();
 	
@@ -54,7 +56,7 @@ SC_MODULE(HAZARD) {
 		sensitive << MEMWBRegWrite << EXMEMRegWrite << IDEXRegWrite << IDEXRegDst;
 		sensitive << IDEXWriteRegisterRt << IDEXWriteRegisterRd << BranchOp;
 		sensitive << EXMEMWriteRegister << MEMWBWriteRegister << Instr 
-				  << enable << dmem_wait << imem_wait;
+				  << enable << dmem_wait << imem_wait << HAZARD_DIV;
 	}
 };
 

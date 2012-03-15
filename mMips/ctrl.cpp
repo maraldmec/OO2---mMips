@@ -132,6 +132,21 @@ void CTRL::ctrl()
                                     HiLoWrite.write(1);
                                     HiLoAluSel.write(0);
 									break;
+						/*case 0x32:  //Divide
+									RegDst.write(1); // No destination
+									RegValue.write(0);
+									Target.write(0);
+									ALUSrc.write(0);
+									MemtoReg.write(0);
+									RegWrite.write(1);
+									MemRead.write(0);
+									MemWrite.write(0);
+									Branch.write(0);
+									ALUop.write(0x2);
+                                    SignExtend.write(1);
+                                    HiLoWrite.write(0);
+                                    HiLoAluSel.write(0);
+									break;*/
                         
 						default:	// Others
 									RegDst.write(1);

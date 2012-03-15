@@ -32,7 +32,7 @@ void HAZARD::hazard()
 	sc_uint<AWORDREG> 	ifidreadregister1_t, ifidreadregister2_t;
 	sc_uint<W_MEMREAD>	bus_ex_ctrl_mem_memread; 
 	sc_uint<W_MEMREAD>	bus_id_ctrl_mem_memread; 
-	
+	sc_uint<1>			divide_hazard; 
 	#ifdef VERBOSE
 		clog << "HAZARD DETECTION UNIT" << endl;
 	#endif
@@ -50,19 +50,23 @@ void HAZARD::hazard()
 	bus_id_ctrl_mem_memread=MEM_ID_READ.read();
 	instr_t = Instr.read();
 	branchop = BranchOp.read();
+	divide_hazard=HAZARD_DIV.read();
 	
 	// Read registers
 	ifidreadregister1_t = instr_t.range(25,21);
 	ifidreadregister2_t = instr_t.range(20,16);
-
+			
 	// Enable the pipeline and instruction memory
     imem_en.write(1);
     pipe_en.write(1);
+	pipe_en_and.write(1);
+
 	//set default values
 	ex_fw1 = 0;
 	ex_fw2 = 0;
 	hazard = 0;
-	if (branchop != 0) {
+
+	if (branchop != 0||divide_hazard==0) {
 		// (Control) branch hazard
 		// Don't fetch a new instruction, insert a 'nop'
 		hazard = 1;
@@ -140,6 +144,7 @@ void HAZARD::hazard()
 		Ex_fw2.write(ex_fw2);
         imem_en.write(0);
         pipe_en.write(0);
+		pipe_en_and.write(0);
     }
     else if( dmem_wait.read() || imem_wait.read() )
     {
@@ -151,6 +156,7 @@ void HAZARD::hazard()
         if( dmem_wait.read() )
 			imem_en.write(0);
         pipe_en.write(0);
+		pipe_en_and.write(0);
     }
 	else if (hazard)
 	{
@@ -178,12 +184,19 @@ void HAZARD::hazard()
             imem_en.write( 1 );
         }
 
-        // regular output
         IFIDWrite.write( 1 );
         Hazard.write(0);
 		Ex_fw1.write(ex_fw1);
 		Ex_fw2.write(ex_fw2);
 	}
+
+	if(divide_hazard==0)
+	{
+		pipe_en_and.write(0);
+		//PCWrite.write(0);
+		//IFIDWrite.write(0);
+	}
+		
 }
 
 void HAZARD_CTRL::hazard_ctrl()

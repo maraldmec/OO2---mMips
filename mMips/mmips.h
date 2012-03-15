@@ -107,6 +107,17 @@ SC_MODULE(mMIPS)
 	sc_signal< sc_bv<DWORD>			> bus_register_hi;
 	sc_signal< sc_bv<DWORD>			> bus_register_lo;
 
+	sc_signal< sc_bv<DWORD> 		> bus_d_div;
+	sc_signal< sc_bv<1> 		> bus_hazard_div;
+	sc_signal< sc_bv<1> 		> bus_test2;
+	sc_signal< sc_bv<1> 		> bus_test;
+	sc_signal< sc_bv<DWORD> 		> bus_a_out;
+	sc_signal< sc_bv<DWORD> 		> bus_b_out;
+	sc_signal< sc_bv<DWORD> 		> bus_a_in;
+	sc_signal< sc_bv<DWORD> 		> bus_b_in;
+	sc_signal< sc_bv<6> 		> bus_iti_div;
+	sc_signal< sc_bv<6> 		> bus_ito_div;
+
 	sc_signal< sc_bv<DWORD> 		> bus_registers_1;
 	sc_signal< sc_bv<DWORD> 		> bus_registers_2;
 
@@ -134,8 +145,10 @@ SC_MODULE(mMIPS)
 	sc_signal< sc_bv<2>				> bus_ex_fw2_select;
 
 	sc_signal< sc_bv<1>				> bus_pipe_en;
+	sc_signal< sc_bv<1>				> bus_pipe_en_and;
 
 	sc_signal< sc_bv<W_ALUCTRL>		> bus_aluctrl;
+	sc_signal< sc_bv<W_ALUCTRL>		> bus_reg_aluctrl;
 
 	sc_signal< sc_bv<W_BRANCHFLAG>	> bus_branch_ctrl;
 
@@ -151,15 +164,13 @@ SC_MODULE(mMIPS)
 	// Instruction decode -> Execution
 	sc_signal< sc_bv<DWORD>			> bus_id_pc; 
 	sc_signal< sc_bv<DWORD> 		> bus_id_data_reg1; 
+	sc_signal< sc_bv<DWORD> 		> bus_reg_mux2; 
 	sc_signal< sc_bv<DWORD>			> bus_id_data_reg2; 
 	sc_signal< sc_bv<DWORD>			> bus_id_immediate; 
 	sc_signal< sc_bv<DWORD> 		> bus_id_instr_25_0; 
 	sc_signal< sc_bv<AWORDREG> 		> bus_id_instr_20_16; 
-	sc_signal< sc_bv<AWORDREG> 		> bus_id_instr_15_11; 
-	sc_signal< sc_bv<6> 			> bus_id_instr_5_0; 
-	sc_signal< sc_bv<5> 			> bus_id_instr_10_6; 
-	sc_signal< sc_bv<W_ALUSRC> 		> bus_id_ctrl_ex_alusrc; 
-	sc_signal< sc_bv<W_ALUOP> 		> bus_id_ctrl_ex_aluop; 
+	sc_signal< sc_bv<AWORDREG> 		> bus_id_instr_15_11;  
+	//sc_signal< sc_bv<W_ALUOP> 		> bus_id_ctrl_ex_aluop; 
 	sc_signal< sc_bv<W_REGDST>		> bus_id_ctrl_ex_regdst; 
 	sc_signal< sc_bv<W_REGVAL>		> bus_id_ctrl_ex_regvalue; 
 	sc_signal< sc_bv<W_TARGET>		> bus_id_ctrl_ex_target; 
@@ -171,6 +182,7 @@ SC_MODULE(mMIPS)
 	sc_signal< sc_bv<W_MEMTOREG> 	> bus_id_ctrl_wb_memtoreg; 
 	sc_signal< sc_bv<W_HILO_W>      > bus_id_ctrl_ex_hilo_write;
 	sc_signal< sc_bv<W_HILOALU_S>   > bus_id_ctrl_ex_hiloalu_sel;
+
 
 	// Execution -> Memory stage
 	sc_signal< sc_bv<AWORDREG>		> bus_ex_regdst_addr;
@@ -215,15 +227,15 @@ SC_MODULE(mMIPS)
 	// Instruction decode - Execution
 	REGISTER_DWORD		        *id_pc;
 	REGISTER_DWORD		        *id_data_reg1;
+
+	REGISTER_DWORD		        *reg_mux2;
+	REGISTER_6			        *reg_aluctrl;
+
 	REGISTER_DWORD		        *id_data_reg2;
 	REGISTER_DWORD		        *id_immediate;
 	REGISTER_DWORD		        *id_instr_25_0;
 	REGISTER_AWORDREG	        *id_instr_20_16;
 	REGISTER_AWORDREG	        *id_instr_15_11;
-	REGISTER_6			        *id_instr_5_0;
-	REGISTER_5			        *id_instr_10_6;
-	REGISTER_W_ALUSRC	        *id_ctrl_ex_alusrc;
-	REGISTER_W_ALUOP	        *id_ctrl_ex_aluop;
 	REGISTER_W_REGDST	        *id_ctrl_ex_regdst;
 	REGISTER_W_REGVAL	        *id_ctrl_ex_regvalue;
 	REGISTER_W_TARGET	        *id_ctrl_ex_target;
@@ -256,6 +268,8 @@ SC_MODULE(mMIPS)
 	// Hi/lo registers
 	REGISTER_DWORD              *hi;
 	REGISTER_DWORD              *lo;
+	REGISTER_DWORD              *d_div;
+	REGISTER_6             *it_div;
 
 	// Hazard handling
 	HAZARD						*hazard;
@@ -308,15 +322,13 @@ SC_MODULE(mMIPS)
 		if_instr = new REGISTER_DWORD("IF_instr"); 
 		id_pc = new REGISTER_DWORD("ID_pc"); 
 		id_data_reg1 = new REGISTER_DWORD("ID_data_reg1"); 
+		reg_mux2 = new REGISTER_DWORD("bus_reg_mux2");
+		reg_aluctrl = new REGISTER_6("bus_reg_aluctrl");
 		id_data_reg2 = new REGISTER_DWORD("ID_data_reg2"); 
 		id_immediate = new REGISTER_DWORD("ID_immediate"); 
 		id_instr_25_0 = new REGISTER_DWORD("ID_instr_25_0"); 
 		id_instr_20_16 = new REGISTER_AWORDREG("ID_instr_20_16"); 
-		id_instr_15_11 = new REGISTER_AWORDREG("ID_instr_15_11"); 
-		id_instr_5_0 = new REGISTER_6("ID_instr_5_0"); 
-		id_instr_10_6 = new REGISTER_5("ID_instr_10_6"); 
-		id_ctrl_ex_alusrc = new REGISTER_W_ALUSRC("ID_ctrl_ex_alusrc"); 
-		id_ctrl_ex_aluop = new REGISTER_W_ALUOP("ID_ctrl_ex_aluop"); 
+		id_instr_15_11 = new REGISTER_AWORDREG("ID_instr_15_11");  
 		id_ctrl_ex_regdst = new REGISTER_W_REGDST("ID_ctrl_ex_regdst"); 
 		id_ctrl_ex_regvalue = new REGISTER_W_REGVAL("ID_ctrl_ex_regvalue"); 
 		id_ctrl_ex_target = new REGISTER_W_TARGET("ID_ctrl_ex_target"); 
@@ -342,6 +354,8 @@ SC_MODULE(mMIPS)
 
 		hi = new REGISTER_DWORD("hi");
 		lo = new REGISTER_DWORD("lo");
+		d_div = new REGISTER_DWORD("d_div");
+		it_div = new REGISTER_6("it_div");
 
 		hazard = new HAZARD("hazard"); 			
 		hazard_ctrl = new HAZARD_CTRL("hazard_ctrl"); 
@@ -395,10 +409,13 @@ SC_MODULE(mMIPS)
 		hazard->imem_wait(rom_wait);
 		hazard->imem_en(rom_r);
 		hazard->pipe_en(bus_pipe_en);
+		hazard->pipe_en_and(bus_pipe_en_and);
 		hazard->Ex_fw1(bus_ex_fw1_select);
 		hazard->Ex_fw2(bus_ex_fw2_select);
 		hazard->MEM_EX_READ(bus_ex_ctrl_mem_memread);
 		hazard->MEM_ID_READ(bus_id_ctrl_mem_memread);
+		hazard->HAZARD_DIV(bus_hazard_div);
+
 
 		// Hazard handling unit
 		hazard_ctrl->Hazard(bus_hazard_hazard);
@@ -444,127 +461,115 @@ SC_MODULE(mMIPS)
 		// Instruction decode -> Execution
 		id_pc->in(bus_if_pc);
 		id_pc->out(bus_id_pc);
-		id_pc->w(bus_pipe_en);
+		id_pc->w(bus_pipe_en_and);
 		id_pc->clk(clk);
 		id_pc->rst(rst);
 
 		id_data_reg1->in(bus_mux9); 
 		id_data_reg1->out(bus_id_data_reg1);
-		id_data_reg1->w(bus_pipe_en);
+		id_data_reg1->w(bus_pipe_en_and);
 		id_data_reg1->clk(clk);
 		id_data_reg1->rst(rst);
 
+		reg_mux2->in(bus_mux2); 
+		reg_mux2->out(bus_reg_mux2);
+		reg_mux2->w(bus_pipe_en_and);
+		reg_mux2->clk(clk);
+		reg_mux2->rst(rst);
+
+		reg_aluctrl->in(bus_aluctrl); 
+		reg_aluctrl->out(bus_reg_aluctrl);
+		reg_aluctrl->w(bus_pipe_en_and);
+		reg_aluctrl->clk(clk);
+		reg_aluctrl->rst(rst);
+
 		id_data_reg2->in(bus_mux10); 
 		id_data_reg2->out(bus_id_data_reg2);
-		id_data_reg2->w(bus_pipe_en);
+		id_data_reg2->w(bus_pipe_en_and);
 		id_data_reg2->clk(clk);
 		id_data_reg2->rst(rst);
 
 		id_immediate->in(bus_imm2word);
 		id_immediate->out(bus_id_immediate);
-		id_immediate->w(bus_pipe_en);
+		id_immediate->w(bus_pipe_en_and);
 		id_immediate->clk(clk);
 		id_immediate->rst(rst);
 
 		id_instr_25_0->in(bus_decoder_instr_25_0);
 		id_instr_25_0->out(bus_id_instr_25_0);
-		id_instr_25_0->w(bus_pipe_en);
+		id_instr_25_0->w(bus_pipe_en_and);
 		id_instr_25_0->clk(clk);
 		id_instr_25_0->rst(rst);
 
 		id_instr_20_16->in(bus_decoder_instr_20_16);
 		id_instr_20_16->out(bus_id_instr_20_16);
-		id_instr_20_16->w(bus_pipe_en);
+		id_instr_20_16->w(bus_pipe_en_and);
 		id_instr_20_16->clk(clk);
 		id_instr_20_16->rst(rst);
 
 		id_instr_15_11->in(bus_decoder_instr_15_11);
 		id_instr_15_11->out(bus_id_instr_15_11);
-		id_instr_15_11->w(bus_pipe_en);
+		id_instr_15_11->w(bus_pipe_en_and);
 		id_instr_15_11->clk(clk);
 		id_instr_15_11->rst(rst);
 
-		id_instr_10_6->in(bus_decoder_instr_10_6);
-		id_instr_10_6->out(bus_id_instr_10_6);
-		id_instr_10_6->w(bus_pipe_en);
-		id_instr_10_6->clk(clk);
-		id_instr_10_6->rst(rst);
-
-		id_instr_5_0->in(bus_decoder_instr_5_0);
-		id_instr_5_0->out(bus_id_instr_5_0);
-		id_instr_5_0->w(bus_pipe_en);
-		id_instr_5_0->clk(clk);
-		id_instr_5_0->rst(rst);
-
-		id_ctrl_ex_alusrc->in(bus_ctrl_alusrc);
-		id_ctrl_ex_alusrc->out(bus_id_ctrl_ex_alusrc);
-		id_ctrl_ex_alusrc->w(bus_pipe_en);
-		id_ctrl_ex_alusrc->clk(clk);
-		id_ctrl_ex_alusrc->rst(rst);
-
-		id_ctrl_ex_aluop->in(bus_ctrl_aluop);
-		id_ctrl_ex_aluop->out(bus_id_ctrl_ex_aluop);
-		id_ctrl_ex_aluop->w(bus_pipe_en);
-		id_ctrl_ex_aluop->clk(clk);
-		id_ctrl_ex_aluop->rst(rst);
-
 		id_ctrl_ex_hilo_write->in(bus_ctrl_hilo_write);
 		id_ctrl_ex_hilo_write->out(bus_id_ctrl_ex_hilo_write);
-		id_ctrl_ex_hilo_write->w(bus_pipe_en);
+		id_ctrl_ex_hilo_write->w(bus_pipe_en_and);
 		id_ctrl_ex_hilo_write->clk(clk);
 		id_ctrl_ex_hilo_write->rst(rst);
 
 		id_ctrl_ex_hiloalu_sel->in(bus_ctrl_hiloalu_sel);
 		id_ctrl_ex_hiloalu_sel->out(bus_id_ctrl_ex_hiloalu_sel);
-		id_ctrl_ex_hiloalu_sel->w(bus_pipe_en);
+		id_ctrl_ex_hiloalu_sel->w(bus_pipe_en_and);
 		id_ctrl_ex_hiloalu_sel->clk(clk);
 		id_ctrl_ex_hiloalu_sel->rst(rst);
 
 		id_ctrl_ex_regdst->in(bus_ctrl_regdst);
 		id_ctrl_ex_regdst->out(bus_id_ctrl_ex_regdst);
-		id_ctrl_ex_regdst->w(bus_pipe_en);
+		id_ctrl_ex_regdst->w(bus_pipe_en_and);
 		id_ctrl_ex_regdst->clk(clk);
 		id_ctrl_ex_regdst->rst(rst);
 
 		id_ctrl_ex_regvalue->in(bus_ctrl_regvalue);
 		id_ctrl_ex_regvalue->out(bus_id_ctrl_ex_regvalue);
-		id_ctrl_ex_regvalue->w(bus_pipe_en);
+		id_ctrl_ex_regvalue->w(bus_pipe_en_and);
 		id_ctrl_ex_regvalue->clk(clk);
 		id_ctrl_ex_regvalue->rst(rst);
 
 		id_ctrl_ex_target->in(bus_ctrl_target);
 		id_ctrl_ex_target->out(bus_id_ctrl_ex_target);
-		id_ctrl_ex_target->w(bus_pipe_en);
+		id_ctrl_ex_target->w(bus_pipe_en_and);
 		id_ctrl_ex_target->clk(clk);
 		id_ctrl_ex_target->rst(rst);
 
 		id_ctrl_mem_branch->in(bus_ctrl_branch);
 		id_ctrl_mem_branch->out(bus_id_ctrl_mem_branch);
-		id_ctrl_mem_branch->w(bus_pipe_en);
+		id_ctrl_mem_branch->w(bus_pipe_en_and);
 		id_ctrl_mem_branch->clk(clk);
 		id_ctrl_mem_branch->rst(rst);
 
 		id_ctrl_mem_memwrite->in(bus_ctrl_memwrite);
 		id_ctrl_mem_memwrite->out(bus_id_ctrl_mem_memwrite);
-		id_ctrl_mem_memwrite->w(bus_pipe_en);
+		id_ctrl_mem_memwrite->w(bus_pipe_en_and);
 		id_ctrl_mem_memwrite->clk(clk);
 		id_ctrl_mem_memwrite->rst(rst);
 
 		id_ctrl_mem_memread->in(bus_ctrl_memread);
 		id_ctrl_mem_memread->out(bus_id_ctrl_mem_memread);
-		id_ctrl_mem_memread->w(bus_pipe_en);
+		id_ctrl_mem_memread->w(bus_pipe_en_and);
 		id_ctrl_mem_memread->clk(clk);
 		id_ctrl_mem_memread->rst(rst);
 
 		id_ctrl_wb_regwrite->in(bus_ctrl_regwrite);
 		id_ctrl_wb_regwrite->out(bus_id_ctrl_wb_regwrite);
-		id_ctrl_wb_regwrite->w(bus_pipe_en);
+		id_ctrl_wb_regwrite->w(bus_pipe_en_and);
 		id_ctrl_wb_regwrite->clk(clk);
 		id_ctrl_wb_regwrite->rst(rst);
 
 		id_ctrl_wb_memtoreg->in(bus_ctrl_memtoreg);
 		id_ctrl_wb_memtoreg->out(bus_id_ctrl_wb_memtoreg);
-		id_ctrl_wb_memtoreg->w(bus_pipe_en);
+		id_ctrl_wb_memtoreg->w(bus_pipe_en_and);
 		id_ctrl_wb_memtoreg->clk(clk);
 		id_ctrl_wb_memtoreg->rst(rst);
 
@@ -692,11 +697,16 @@ SC_MODULE(mMIPS)
 
 		// ALU
 		alu->a(bus_id_data_reg1);
-		alu->b(bus_mux2);
+		alu->b(bus_reg_mux2);
+		alu->d(bus_d_div);
 		alu->r(bus_alu_result);
 		alu->r2(bus_alu_result_2);
 		alu->z(bus_alu_zero);
-		alu->ctrl(bus_aluctrl);
+		alu->ctrl(bus_reg_aluctrl);
+		alu->alu_done(bus_hazard_div);
+		alu->iin(bus_ito_div);
+		alu->iout(bus_iti_div);
+
 
 		// Hi/lo registers
 		hi->in(bus_alu_result_2);
@@ -709,6 +719,18 @@ SC_MODULE(mMIPS)
 		lo->w(bus_id_ctrl_ex_hilo_write);
 		lo->clk(clk);
 		lo->rst(rst);
+
+		d_div->in(bus_alu_result);
+		d_div->out(bus_d_div);
+		d_div->w(bus_pipe_en);
+		d_div->clk(clk);
+		d_div->rst(rst);
+
+		it_div->in(bus_iti_div);
+		it_div->out(bus_ito_div);
+		it_div->w(bus_pipe_en);
+		it_div->clk(clk);
+		it_div->rst(rst);
 
 		// MUX8
 		mux8->in0(bus_alu_result);
@@ -725,9 +747,9 @@ SC_MODULE(mMIPS)
 		mux6->out(bus_mux6); 
 
 		// Mux 2 (Registerfile or signextend)
-		mux2->in0(bus_id_data_reg2);
-		mux2->in1(bus_id_immediate);
-		mux2->sel(bus_id_ctrl_ex_alusrc);
+		mux2->in0(bus_mux10);
+		mux2->in1(bus_imm2word);
+		mux2->sel(bus_ctrl_alusrc);
 		mux2->out(bus_mux2);
 
 		// Mux 2 (Registerfile or signextend)
@@ -747,10 +769,11 @@ SC_MODULE(mMIPS)
 		mux10->out(bus_mux10);
 
 		// ALU ctrl
-		aluctrl->ALUop(bus_id_ctrl_ex_aluop);
-		aluctrl->functionCode(bus_id_instr_5_0);
-		aluctrl->Shamt(bus_id_instr_10_6);
+		aluctrl->ALUop(bus_ctrl_aluop);
+		aluctrl->functionCode(bus_decoder_instr_5_0);
+		aluctrl->Shamt(bus_decoder_instr_10_6);
 		aluctrl->ALUctrl(bus_aluctrl);
+		aluctrl->DIV(bus_hazard_div);
 
 		// Signextend byte
 		signextendbyte->in(bus_mem_dmem_data);

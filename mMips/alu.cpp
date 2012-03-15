@@ -27,6 +27,10 @@ void ALU::alu()
 	sc_uint<W_ALUCTRL>		ctrl_t;
 	sc_int<DWORD>			s_int, t_int;
 	sc_int<64>				c;
+	sc_uint<DWORD>			e;
+	sc_uint<6>				it_in;
+	sc_uint<6>				it_out;
+	sc_bv<1>				hazard;
 
 	#ifdef VERBOSE
 		clog << "ALU" << endl;
@@ -41,6 +45,7 @@ void ALU::alu()
 
 	result = 0;
     result_hi = 0;
+	hazard=1;
 	// Calculate result using selected operation
 	switch (ctrl_t) {
 		case 0x0:	// And
@@ -53,10 +58,23 @@ void ALU::alu()
 
 		case 0x2:	// Add
 					result = s_int + t_int;
+					
+					// Calculate the zero output
+					if (sc_uint<DWORD>(result) == 0)
+							zero = 1;
+					else
+						zero = 0;
+					z.write(zero);
 					break;
 
 		case 0x3:	// Add unsigned
 					result = s + t;
+					// Calculate the zero output
+					if (sc_uint<DWORD>(result) == 0)
+						zero = 1;
+					else
+						zero = 0;
+					z.write(zero);
 					break;
 
 		case 0x4:	// Xor
@@ -65,6 +83,12 @@ void ALU::alu()
 
 		case 0x6:	// Subtract unsigned
 					result = s - t;
+					// Calculate the zero output
+					if (sc_uint<DWORD>(result) == 0)
+						zero = 1;
+					else
+						zero = 0;
+					z.write(zero);
 					break;
 
 		case 0x7:	// Set-on-less-than
@@ -72,6 +96,12 @@ void ALU::alu()
 						result = 1;
 					else
 						result = 0;
+					// Calculate the zero output
+						if (sc_uint<DWORD>(result) == 0)
+							zero = 1;
+						else
+							zero = 0;
+					z.write(zero);
 					break;
 
 		case 0x8:	// Set-on-less-than unsigned
@@ -79,6 +109,12 @@ void ALU::alu()
 						result = 1;
 					else
 						result = 0;
+					// Calculate the zero output
+						if (sc_uint<DWORD>(result) == 0)
+							zero = 1;
+						else
+							zero = 0;
+						z.write(zero);
 					break;
 
 		case 0x9:	// Load upper immediate
@@ -129,8 +165,9 @@ void ALU::alu()
 
         case 0x13:  // Multu
                     c = sc_int<64>(s) * sc_int<64>(t);
-                    result = c.range(DWORD-1,0);
-                    result_hi = c.range(63, DWORD);
+					result = c.range(DWORD-1,0);
+					result_hi = c.range(63, DWORD);
+					r2.write(result_hi);
                     break;
 		case 0x14:  //Clipping
                     if(t_int<0)
@@ -140,15 +177,46 @@ void ALU::alu()
 					else 
 						result=t_int;
                     break;
+		case 0x15:  //Divide
+					it_in=iin.read();
+					if(it_in==0)
+						e=0;
+					else
+						e=d.read();
+					e |=(1<<(31-it_in));
+					c = sc_int<32>(t) * e;
+					if(c>sc_int<32>(s))
+							e &= ~(1<<(31-it_in));
+
+					if(e>255)
+						result=255;
+					else if(e<0)
+						result=0;
+					else
+						result=e;
+
+					if(it_in==31)
+					{
+						it_out=0;
+						hazard=1;
+					}
+					else
+					{
+						it_out=it_in+1;
+						hazard=0;
+					}
+					iout.write(it_out);
+                    break;
+		case 0x16:  //Add +1 or -1
+			        c = sc_int<64>(s) * sc_int<64>(t);
+					result = c.range(DWORD-1,0);
+					result_hi = c.range(63, DWORD);
+					r2.write(result_hi);
+					r2.write(result_hi);
+                    break;
 	}
 
-// Calculate the zero output
-	if (sc_uint<DWORD>(result) == 0)
-		zero = 1;
-	else
-		zero = 0;
 	// Write results to output
+	alu_done.write(hazard);
 	r.write(result);
-    r2.write(result_hi);
-	z.write(zero);
 }

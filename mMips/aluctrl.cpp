@@ -116,8 +116,14 @@ void ALUCTRL::aluctrl()
 						case 0x2B:	// Set-on-less-than (unsigned)
 									aluCtrl = 0x8;
 									break;
-						case 0x31:  // Multiply unsigned
+						case 0x31:  //Clipping
                                     aluCtrl = 0x14;
+                                    break;
+						case 0x32:  //Divide
+                                    aluCtrl = 0x15;
+                                    break;
+						case 0x33:  //
+                                    aluCtrl = 0x16;
                                     break;
 
 						default : aluCtrl = 0x0; break;
@@ -154,7 +160,6 @@ void ALUCTRL::aluctrl()
 					break;
 		default : aluCtrl = 0x0; break;
 	}
-	
 	// Set result on output
 	ALUctrl.write(aluCtrl);
 }
